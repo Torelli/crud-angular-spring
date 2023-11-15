@@ -1,3 +1,5 @@
+import { CoursesService } from './../services/courses.service';
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Course } from '../model/course';
@@ -12,6 +14,10 @@ import { AppMaterialModule } from '../../shared/app-material/app-material.module
   styleUrl: './courses.component.scss',
 })
 export class CoursesComponent {
-  courses: Course[] = [{ _id: '1', name: 'Angular', category: 'front-end' }];
+  courses$: Observable<Course[]>;
   displayedColumns = ['name', 'category'];
+
+  constructor(private CoursesService: CoursesService) {
+    this.courses$ = this.CoursesService.findAll();
+  }
 }
