@@ -1,15 +1,17 @@
-import { CoursesService } from './../services/courses.service';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Course } from '../model/course';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable, catchError, of } from 'rxjs';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
-
+import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { SharedModule } from '../../shared/shared.module';
+import { Course } from '../model/course';
+import { CoursesService } from './../services/courses.service';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule, AppMaterialModule],
+  imports: [CommonModule, AppMaterialModule, SharedModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
 })
@@ -17,7 +19,21 @@ export class CoursesComponent {
   courses$: Observable<Course[]>;
   displayedColumns = ['name', 'category'];
 
-  constructor(private CoursesService: CoursesService) {
-    this.courses$ = this.CoursesService.findAll();
+  constructor(
+    private CoursesService: CoursesService,
+    public dialog: MatDialog
+  ) {
+    this.courses$ = this.CoursesService.findAll().pipe(
+      catchError((error) => {
+        this.onError('Erro ao carregar cursos');
+        return of([]);
+      })
+    );
+  }
+
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
   }
 }
