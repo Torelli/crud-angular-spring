@@ -1,3 +1,4 @@
+import { Course } from './../model/course';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
@@ -17,6 +18,10 @@ export class CoursesService {
       //delay(5000),
       tap((courses) => console.log(courses))
     );
+  }
+
+  loadById(id: string) {
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
   }
 
   save(record: Partial<Course>) {

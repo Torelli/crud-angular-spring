@@ -2,9 +2,9 @@ import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppMaterialModule } from '../../shared/app-material/app-material.module';
-import { SharedModule } from '../../shared/shared.module';
-import { CoursesService } from '../services/courses.service';
+import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
+import { SharedModule } from '../../../shared/shared.module';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-course-form',
