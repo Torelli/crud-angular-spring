@@ -1,3 +1,4 @@
+import { CoursesListComponent } from './../courses-list/courses-list.component';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,13 +13,12 @@ import { CoursesService } from './../services/courses.service';
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule, AppMaterialModule, SharedModule],
+  imports: [CommonModule, AppMaterialModule, SharedModule, CoursesListComponent],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
 })
 export class CoursesComponent {
   courses$: Observable<Course[]>;
-  displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
     private CoursesService: CoursesService,
