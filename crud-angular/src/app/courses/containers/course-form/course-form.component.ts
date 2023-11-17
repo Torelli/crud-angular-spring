@@ -30,11 +30,13 @@ export class CourseFormComponent {
     private route: ActivatedRoute
   ) {
     const course: Course = this.route.snapshot.data['course'];
-    this.form.setValue({
-      _id: course._id,
-      name: course.name,
-      category: course.category,
-    });
+    if(course) {
+      this.form.setValue({
+        _id: course._id,
+        name: course.name,
+        category: course.category,
+      });
+    }
   }
 
   onSubmit() {
