@@ -4,7 +4,7 @@
       <span>Detalhes do curso</span>
     </mat-toolbar>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" class="min-width">
       <mat-form-field class="full-width">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="name" />
@@ -12,12 +12,18 @@
 
       <mat-form-field class="full-width">
         <mat-label>Categoria</mat-label>
-        <input matInput formControlName="category" />
+        <mat-select formControlName="category">
+          <mat-option value="null"></mat-option>
+          <mat-option value="front-end">Front-end</mat-option>
+          <mat-option value="back-end">Back-end</mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
     <button mat-raised-button (click)="onCancel()">Cancelar</button>
   </mat-card-actions>
 </mat-card>
