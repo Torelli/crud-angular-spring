@@ -3,7 +3,7 @@
 
 @include mat.core();
 
-$custom-app-primary: mat.define-palette(mat.$purple-palette, A700);
+$custom-app-primary: mat.define-palette(mat.$blue-palette, A200);
 $custom-app-accent: mat.define-palette(mat.$blue-palette, A200, A400, A700);
 $custom-app-warn: mat.define-palette(mat.$red-palette);
 
