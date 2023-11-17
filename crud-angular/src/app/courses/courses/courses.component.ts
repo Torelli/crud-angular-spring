@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import { SharedModule } from '../../shared/shared.module';
 import { Course } from '../model/course';
 import { CoursesService } from './../services/courses.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
